@@ -32,7 +32,7 @@ def ssh_keyscan(port,ip_address):
         base64str = extract_key(output.decode())+'='
         print(ip_address + ' services.ssh.server_host_key.fingerprint_sha256='+decode_base64_and_hex(base64str))
     except:
-        print(ip_address + ' Probably not the ssh port')
+        print(ip_address + ' [' + port +']Probably not the ssh port')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     if args.port:
         port = args.port
     else:
-        port = 22
+        port = '22'
     if (ip_address):
         ssh_keyscan(port,ip_address)
     else:
